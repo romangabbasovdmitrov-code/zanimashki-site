@@ -158,42 +158,17 @@ function coverSVGInner(p) {
     </g>`;
 }
 
-/* Маленькая иконка-превью для корзины/мини-блоков */
-function coverThumbSVG(p) {
-  const [c1, c2] = p.palette;
-  const gid = 'gt-' + p.id;
-  return `
-  <svg viewBox="0 0 400 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Занимашки — ${p.cardTitle || p.title}">
-    <defs>
-      <linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="${c1}"/>
-        <stop offset="1" stop-color="${c2}"/>
-      </linearGradient>
-    </defs>
-    <rect width="400" height="370" fill="url(#${gid})"/>
-    <g transform="translate(200 196) rotate(-5)">
-      <rect x="-92" y="-118" width="184" height="236" rx="18" fill="#fff"/>
-      ${(() => { let s = ''; for (let i = -66; i <= 66; i += 22) s += `<circle cx="${i}" cy="-104" r="4.5" fill="#fff" stroke="#D9DEEE" stroke-width="2"/>`; return s; })()}
-      <rect x="-56" y="-84" width="112" height="26" rx="13" fill="#fff" stroke="#E8352E" stroke-width="2.2"/>
-      <text x="0" y="-65" font-size="13" font-weight="900" fill="#E8352E" text-anchor="middle" letter-spacing="1" font-family="Nunito, sans-serif">ЗАНИМАШКИ</text>
-      <text x="0" y="10" font-size="${(p.coverLabel || '').length > 6 ? 30 : 44}" font-weight="900" fill="#1E2A56" text-anchor="middle" font-family="Nunito, sans-serif">${p.coverLabel || ''}</text>
-      <path d="M-56 40 h112" stroke="#1E2A56" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round" opacity=".45" fill="none"/>
-      <path d="M-56 62 h78" stroke="#1E2A56" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round" opacity=".3" fill="none"/>
-    </g>
-    ${starSVG(52, 58, 12, '#FFC83D', .95)}
-    ${starSVG(352, 96, 9, '#FF6F61', .8)}
-  </svg>`;
-}
-
 /* Логотип (variant: 'header' | 'footer') */
 function logoSVG(variant = 'header') {
   const badgeCls = variant === 'footer' ? 'logo-badge logo-badge-footer' : 'logo-badge';
+  const badgeSize = variant === 'footer' ? 55 : 72; // в шапке логотип увеличен на 30%
+  const inner = variant === 'footer'
+    ? `<span class="logo-word">Занимашки</span>
+      <span class="logo-sub">развитие детей от 1 до 7 лет</span>`
+    : `<span class="logo-sub">Сделано в России<img class="logo-flag" src="assets/flag.png?v=1" alt="Флаг России"></span>`;
   return `
   <a href="index.html" class="logo" aria-label="Занимашки — на главную">
-    <img class="${badgeCls}" src="assets/logo.png?v=3" alt="Логотип Занимашки — кот и мышка читают книжку" width="55" height="55">
-    <span class="logo-wrap">
-      <span class="logo-word">Занимашки</span>
-      <span class="logo-sub">развитие детей от 1 до 9 лет</span>
-    </span>
+    <img class="${badgeCls}" src="assets/logo.png?v=3" alt="Логотип Занимашки — кот и мышка читают книжку" width="${badgeSize}" height="${badgeSize}">
+    <span class="logo-wrap">${inner}</span>
   </a>`;
 }

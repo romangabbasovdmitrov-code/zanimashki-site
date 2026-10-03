@@ -131,38 +131,16 @@ function renderProductPage() {
     <div class="product-info">
       <div class="p-type">${TYPE_LABELS[p.type]} · возраст ${p.ageLabel}</div>
       <h1>${p.title}</h1>
-      <div class="product-meta">
-        <div class="p-rating">${starsSVG(p.rating)}<b>${p.rating.toFixed(1)}</b><span>· ${p.reviews.toLocaleString('ru-RU')} отзывов на Ozon</span></div>
-        <div class="q"><b>✓</b> Бренд проверен</div>
-      </div>
-      <div class="buy-box">
-        <div class="row-prices">
-          <span class="p-price">${money(p.price)}</span>
-          <span class="p-old">${money(p.oldPrice)}</span>
-          <span class="p-disc">−${discount(p)}%</span>
-        </div>
-        <div class="save-note">Вы экономите ${money(p.oldPrice - p.price)}</div>
-        <div class="bonus">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7a4.95 4.95 0 1 0-7-7l-7 7v7h7z"/><path d="M16 5a3 3 0 0 1 3 3"/></svg>
-          Маркер (ручка с исчезающими чернилами) — в подарок
-        </div>
-        <div class="buy-row">
-          <div class="qty" aria-label="Количество">
-            <button type="button" id="qty-minus" aria-label="Уменьшить">−</button>
-            <input id="qty-input" value="1" inputmode="numeric" aria-label="Количество товара">
-            <button type="button" id="qty-plus" aria-label="Увеличить">+</button>
-          </div>
-          <button class="btn btn-primary btn-lg" id="p-add" data-add="${p.id}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"/></svg>
-            В корзину
-          </button>
-        </div>
-        <a class="btn btn-ghost buy-ozon" href="${BRAND.ozonUrl}" target="_blank" rel="noopener">Купить на Ozon</a>
+      <div class="mp-row mp-row--product">
+        <a class="mp-btn" href="https://www.wildberries.ru/brands/zanimashki/knigi" target="_blank" rel="noopener" aria-label="Wildberries"><img src="assets/marketplaces/icon-wb.png?v=2" alt="Wildberries"></a>
+        <a class="mp-btn" href="https://www.ozon.ru/seller/zanimashki/brand/zanimashki-100284718/" target="_blank" rel="noopener" aria-label="OZON"><img src="assets/marketplaces/icon-ozon.png?v=2" alt="OZON"></a>
+        <a class="mp-btn" href="https://www.detmir.ru/catalog/index/name/sortforbrand/brand/72760/" target="_blank" rel="noopener" aria-label="Детский мир"><img src="assets/marketplaces/icon-detmir.png?v=2" alt="Детский мир"></a>
+        <span class="mp-note">Заказывайте где удобнее</span>
       </div>
       <div class="delivery-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         <div>
-          <b>Доставка со складов Ozon — быстро и надёжно</b>
+          <b>Быстрая доставка по всей России</b>
           <span>Курьером или в пункт выдачи по всей России, обычно уже завтра. Оплата при получении или онлайн. Возврат в течение 7 дней.</span>
         </div>
       </div>
@@ -212,12 +190,9 @@ function renderProductPage() {
           </div>
           ${starsSVG(r.rating)}
           <p class="review-text">${r.text}</p>
-          <div class="review-bottom"><span class="review-verdict">✓ Покупка на Ozon</span></div>
+          <div class="review-bottom"><span class="review-verdict">✓ Проверенная покупка</span></div>
         </article>`).join('')}
       </div>
-      <p style="margin-top:20px; font-size:14px; font-weight:700; color:var(--muted)">
-        Ещё больше отзывов — <a href="${BRAND.ozonUrl}" target="_blank" rel="noopener" style="color:#005BFF">в официальном магазине на Ozon</a> (рейтинг ${BRAND.ozonRating}).
-      </p>
     </section>
 
     <section class="p-section" style="background:transparent; box-shadow:none; padding:0">
@@ -246,21 +221,6 @@ function renderProductPage() {
   });
   document.getElementById('v-prev').addEventListener('click', () => show(cur - 1));
   document.getElementById('v-next').addEventListener('click', () => show(cur + 1));
-
-  /* Количество */
-  const qtyInput = document.getElementById('qty-input');
-  const addBtn = document.getElementById('p-add');
-  document.getElementById('qty-minus').addEventListener('click', () => {
-    qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
-  });
-  document.getElementById('qty-plus').addEventListener('click', () => {
-    qtyInput.value = Math.min(99, parseInt(qtyInput.value) + 1);
-  });
-  addBtn.addEventListener('click', () => {
-    const q = Math.max(1, parseInt(qtyInput.value) || 1);
-    cartAdd(p.id, q);
-    toast('Добавлено в корзину: ' + p.cardTitle + (q > 1 ? ' × ' + q : ''));
-  });
 
   /* JSON-LD товара */
   const ld = document.createElement('script');

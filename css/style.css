@@ -231,60 +231,7 @@ mark.hl {
 .stat-chip span { display: block; font-size: 12px; color: var(--muted); font-weight: 700; margin-top: 2px; overflow-wrap: break-word; }
 
 .hero-visual { position: relative; }
-/* Картинка увеличена на 20% с ростом вверх и влево */
-.hero-frame { position: relative; width: 120%; max-width: none; margin-left: -20%; transform: translateY(-4%); }
 .hero-art { display: block; width: 100%; height: auto; border-radius: 28px; }
-/* Края картинки плавно растворяются в фоне страницы */
-.hero-frame::after {
-  content: ""; position: absolute; inset: 0;
-  border-radius: 28px; pointer-events: none;
-  box-shadow: inset 0 0 59px 42px var(--cream);
-}
-
-/* Мультяшное появление персонажей: одноразово при загрузке главной.
-   Слои — та же картинка, обрезанная мягкой маской; в конце кадры
-   совпадают пиксель в пиксель с базовым изображением. */
-.hero-art { animation: heroBaseIn .45s ease-out .5s both; }
-.hero-anim {
-  position: absolute; inset: 0; pointer-events: none;
-  background: url("../assets/hero-new.jpg?v=4") no-repeat;
-  background-size: 100% 100%;
-}
-.hero-anim--cat {
-  -webkit-mask-image: radial-gradient(ellipse 52% 52% at 28% 46%, #000 55%, transparent 98%);
-          mask-image: radial-gradient(ellipse 52% 52% at 28% 46%, #000 55%, transparent 98%);
-  animation: heroInCat 1s cubic-bezier(.2, .75, .3, 1.25) .12s both;
-}
-.hero-anim--bird {
-  -webkit-mask-image: radial-gradient(ellipse 17% 17% at 72% 24%, #000 55%, transparent 98%);
-          mask-image: radial-gradient(ellipse 17% 17% at 72% 24%, #000 55%, transparent 98%);
-  animation: heroInBird 1s cubic-bezier(.2, .75, .3, 1.25) .3s both;
-}
-.hero-anim--mouse {
-  -webkit-mask-image: radial-gradient(ellipse 48% 48% at 68% 72%, #000 55%, transparent 98%);
-          mask-image: radial-gradient(ellipse 48% 48% at 68% 72%, #000 55%, transparent 98%);
-  animation: heroInMouse 1s cubic-bezier(.2, .75, .3, 1.25) .45s both;
-}
-@keyframes heroBaseIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes heroInCat {
-  from { opacity: 0; transform: translate(-90px, 70px) rotate(-7deg); }
-  70% { opacity: 1; }
-  to { opacity: 1; transform: none; }
-}
-@keyframes heroInBird {
-  from { opacity: 0; transform: translate(110px, -80px) rotate(10deg) scale(.6); }
-  70% { opacity: 1; }
-  to { opacity: 1; transform: none; }
-}
-@keyframes heroInMouse {
-  from { opacity: 0; transform: translate(80px, 90px) rotate(6deg) scale(.7); }
-  70% { opacity: 1; }
-  to { opacity: 1; transform: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-art { animation: none; }
-  .hero-anim { display: none; }
-}
 
 /* ---------- Бегущая строка ---------- */
 .ticker { background: var(--navy); color: #fff; overflow: hidden; padding: 13px 0; }
@@ -714,8 +661,7 @@ a.p-title-link:hover .p-title { color: var(--teal-2); }
   .nav { display: none; }
   .burger { display: flex; }
   .hero-in { grid-template-columns: 1fr; padding: 52px 0 64px; gap: 40px; }
-  .hero-visual { max-width: 520px; margin: 0 auto; }
-  .hero-frame { width: 100%; margin-left: 0; transform: none; }
+  .hero-visual { max-width: 480px; margin: 0 auto; }
   .header-actions { margin-left: auto; margin-right: 0; }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }
   .products-grid, .catalog-grid { grid-template-columns: repeat(2, 1fr); }

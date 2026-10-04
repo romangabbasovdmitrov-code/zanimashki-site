@@ -130,7 +130,7 @@ function renderProductPage() {
     </div>
     <div class="product-info">
       <div class="p-type">${TYPE_LABELS[p.type]} · возраст ${p.ageLabel}</div>
-      <h1>${p.title}</h1>
+      <h1>${p.cardTitle}</h1>
       <div class="mp-row mp-row--product">
         <a class="mp-btn" href="https://www.wildberries.ru/brands/zanimashki/knigi" target="_blank" rel="noopener" aria-label="Wildberries"><img src="assets/marketplaces/icon-wb.png?v=2" alt="Wildberries"></a>
         <a class="mp-btn" href="https://www.ozon.ru/seller/zanimashki/brand/zanimashki-100284718/" target="_blank" rel="noopener" aria-label="OZON"><img src="assets/marketplaces/icon-ozon.png?v=2" alt="OZON"></a>

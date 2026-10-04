@@ -242,6 +242,20 @@ mark.hl {
           mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
 }
 
+/* Кнопка звука на видео в hero (автозапуск возможен только без звука) */
+.hero-sound {
+  position: absolute; right: 14px; bottom: 14px; z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; border: none;
+  background: #fff; box-shadow: var(--shadow-s); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .15s ease;
+}
+.hero-sound:hover { transform: scale(1.08); }
+.hero-sound svg { width: 22px; height: 22px; color: var(--navy); }
+.hero-sound .ic-on { display: none; }
+.hero-sound.is-on .ic-on { display: block; }
+.hero-sound.is-on .ic-off { display: none; }
+
 /* ---------- Бегущая строка ---------- */
 .ticker { background: var(--navy); color: #fff; overflow: hidden; padding: 13px 0; }
 .ticker-track { display: flex; gap: 44px; width: max-content; animation: ticker 34s linear infinite; }

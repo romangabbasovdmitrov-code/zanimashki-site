@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,7 +82,12 @@
           </div>
         </div>
         <div class="hero-visual">
-          <video class="hero-art" src="assets/hero-video.mp4" poster="assets/hero-azbuka.png" autoplay muted loop playsinline aria-label="Котёнок и мышка — герои «Занимашек» — весёлая азбука"></video>
+          <video class="hero-art" src="assets/hero-video.mp4" poster="assets/hero-azbuka.png" autoplay muted playsinline aria-label="Котёнок и мышка — герои «Занимашек» — весёлая азбука"></video>
+          <!-- Автозапуск возможен только без звука; звук включается кнопкой -->
+          <button class="hero-sound" id="hero-sound" type="button" aria-label="Включить звук видео">
+            <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -344,6 +349,23 @@
           <p class="review-text">${r.text}</p>
           <div class="review-bottom"><span class="review-verdict">✓ Проверенная покупка</span><span>${r.source}</span></div>
         </article>`).join('');
+
+      // Звук видео героя: автозапуск идёт без звука, кнопка включает/выключает;
+      // после окончания ролика клик по кнопке проигрывает его заново со звуком
+      const heroVideo = document.querySelector('video.hero-art');
+      const heroSound = document.getElementById('hero-sound');
+      if (heroVideo && heroSound) {
+        heroSound.addEventListener('click', () => {
+          heroVideo.muted = !heroVideo.muted;
+          const on = !heroVideo.muted;
+          heroSound.classList.toggle('is-on', on);
+          heroSound.setAttribute('aria-label', on ? 'Выключить звук видео' : 'Включить звук видео');
+          if (on) {
+            if (heroVideo.ended) heroVideo.currentTime = 0;
+            heroVideo.play().catch(() => {});
+          }
+        });
+      }
 
       initReveal();
     }

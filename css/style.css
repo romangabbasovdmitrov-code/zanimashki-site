@@ -215,6 +215,7 @@ mark.hl {
 .hero h1 { margin-bottom: 14px; }
 .hero-sub { font-size: 17.5px; color: var(--muted); max-width: 560px; margin-bottom: 20px; }
 .hero-sub b { color: var(--ink); }
+.hero-sub-note { display: block; margin-top: 4px; font-size: 15px; font-weight: 600; }
 
 /* Логотипы маркетплейсов в hero */
 .hero-markets { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }

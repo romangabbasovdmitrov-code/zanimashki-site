@@ -665,7 +665,7 @@ a.p-title-link:hover .p-title { color: var(--teal-2); }
   .section { padding: 64px 0; }
   .nav { display: none; }
   .burger { display: flex; }
-  .hero-in { grid-template-columns: 1fr; padding: 52px 0 140px; gap: 40px; }
+  .hero-in { grid-template-columns: 1fr; padding: 52px 0 420px; gap: 40px; }
   .hero-visual { max-width: 480px; margin: 0 auto; }
   .header-actions { margin-left: auto; margin-right: 0; }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }

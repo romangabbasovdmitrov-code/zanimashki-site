@@ -46,7 +46,7 @@ function renderHeader() {
   <div class="topbar">
     <div class="topbar-in">
       <span class="dot"></span>
-      <span>Официальный магазин «Занимашки» · Быстрая доставка по всей России — от 1 дня</span>
+      <span>Официальный магазин «Занимашки» ·<br class="topbar-br">Быстрая доставка по всей России — от 1 дня</span>
     </div>
   </div>
   <header class="header">

@@ -195,7 +195,9 @@ mark.hl {
     radial-gradient(620px 420px at -8% 110%, rgba(255, 111, 97, .13), transparent 60%),
     var(--cream);
 }
-.hero-in { display: grid; grid-template-columns: 1.06fr .94fr; gap: 48px; align-items: center; padding: 24px 0 56px; }
+/* .hero .hero-in — повышенная специфичность, чтобы паддинги не перебивались
+   поздним правилом .container из медиазапроса 620px */
+.hero .hero-in { display: grid; grid-template-columns: 1.06fr .94fr; gap: 48px; align-items: center; padding: 24px 0 56px; }
 .hero-copy { position: relative; z-index: 1; }
 
 .hero-rating {
@@ -665,7 +667,7 @@ a.p-title-link:hover .p-title { color: var(--teal-2); }
   .section { padding: 64px 0; }
   .nav { display: none; }
   .burger { display: flex; }
-  .hero-in { grid-template-columns: 1fr; padding: 52px 0 420px; gap: 40px; }
+  .hero .hero-in { grid-template-columns: 1fr; padding: 52px 0 50px; gap: 40px; }
   .hero-visual { max-width: 480px; margin: 0 auto; }
   .header-actions { margin-left: auto; margin-right: 0; }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); }

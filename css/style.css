@@ -219,8 +219,7 @@ mark.hl {
 
 /* Логотипы маркетплейсов в hero */
 .hero-markets { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
-.market { display: block; transition: transform .15s ease; }
-.market:hover { transform: translateY(-2px); }
+.market { display: block; }
 .market img { height: 32px; width: auto; display: block; }
 
 .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 56px; }

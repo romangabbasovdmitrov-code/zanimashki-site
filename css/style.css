@@ -242,16 +242,21 @@ mark.hl {
           mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
 }
 
-/* Кнопка звука на видео в hero (автозапуск возможен только без звука) */
-.hero-sound {
-  position: absolute; right: 14px; bottom: 14px; z-index: 2;
+/* Кнопки воспроизведения и звука на видео в hero (автозапуск возможен только без звука) */
+.hero-play, .hero-sound {
+  position: absolute; bottom: 14px; z-index: 2;
   width: 44px; height: 44px; border-radius: 50%; border: none;
   background: #fff; box-shadow: var(--shadow-s); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: transform .15s ease;
 }
-.hero-sound:hover { transform: scale(1.08); }
-.hero-sound svg { width: 22px; height: 22px; color: var(--navy); }
+.hero-play { right: 68px; }
+.hero-sound { right: 14px; }
+.hero-play:hover, .hero-sound:hover { transform: scale(1.08); }
+.hero-play svg, .hero-sound svg { width: 22px; height: 22px; color: var(--navy); }
+.hero-play .ic-pause { display: none; }
+.hero-play.is-playing .ic-pause { display: block; }
+.hero-play.is-playing .ic-play { display: none; }
 .hero-sound .ic-on { display: none; }
 .hero-sound.is-on .ic-on { display: block; }
 .hero-sound.is-on .ic-off { display: none; }

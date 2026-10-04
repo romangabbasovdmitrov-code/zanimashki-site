@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <video class="hero-art" src="assets/hero-video.mp4" poster="assets/hero-azbuka.png" autoplay muted playsinline aria-label="Котёнок и мышка — герои «Занимашек» — весёлая азбука"></video>
+          <video class="hero-art" src="assets/hero-video.mp4?v=2" poster="assets/hero-azbuka.png" autoplay muted playsinline aria-label="Котёнок и мышка — герои «Занимашек» — весёлая азбука"></video>
           <!-- Автозапуск возможен только без звука; звук включается кнопкой -->
           <button class="hero-sound" id="hero-sound" type="button" aria-label="Включить звук видео">
             <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
@@ -354,6 +354,7 @@
       // после окончания ролика клик по кнопке проигрывает его заново со звуком
       const heroVideo = document.querySelector('video.hero-art');
       const heroSound = document.getElementById('hero-sound');
+      if (heroVideo) heroVideo.playbackRate = 1.25; // ускорение воспроизведения на 25%
       if (heroVideo && heroSound) {
         heroSound.addEventListener('click', () => {
           heroVideo.muted = !heroVideo.muted;

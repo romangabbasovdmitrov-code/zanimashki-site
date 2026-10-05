@@ -473,6 +473,7 @@ a.p-title-link:hover .p-title { color: var(--teal-2); }
 }
 .pick:hover .pick-img { transform: translateY(-4px); box-shadow: var(--shadow-m); }
 .pick .pick-img svg { width: 100%; height: 100%; display: block; }
+.pick .pick-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .pick .pick-name { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 800; color: var(--navy); }
 
 /* Кнопки маркетплейсов под блоками каталога */

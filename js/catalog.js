@@ -48,7 +48,7 @@ function renderAgeSet(cfg) {
   if (picks) picks.style.display = 'none';
 
   const back = document.createElement('div');
-  back.style.margin = '0 0 18px';
+  back.style.margin = '26px 0 18px';
   back.innerHTML = '<a class="btn btn-ghost" href="catalog.html">← Показать весь каталог</a>';
 
   const head = document.createElement('div');

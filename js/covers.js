@@ -164,7 +164,7 @@ function logoSVG(variant = 'header') {
   const badgeSize = variant === 'footer' ? 55 : 72; // в шапке логотип увеличен на 30%
   const inner = variant === 'footer'
     ? `<span class="logo-word">Занимашки</span>
-      <span class="logo-sub">развитие детей от 1 до 7 лет</span>`
+      <span class="logo-sub">развитие детей от 1 до 8 лет</span>`
     : `<span class="logo-sub">Сделано в России<img class="logo-flag" src="assets/flag.png?v=1" alt="Флаг России"></span>`;
   return `
   <a href="index.html" class="logo" aria-label="Занимашки — на главную">

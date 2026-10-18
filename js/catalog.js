@@ -56,7 +56,7 @@ function renderAgeSet(cfg) {
   head.style.marginTop = '26px';
   head.innerHTML = `
     <div class="p-type">${cfg.age}</div>
-    <h1 class="h2">${cfg.title}</h1>
+    <h1 class="h2">${cfg.title.replace(': ', ':<br>')}</h1>
     <p>${cfg.desc}</p>`;
 
   const grid = document.createElement('div');

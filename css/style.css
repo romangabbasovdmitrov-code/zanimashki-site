@@ -79,10 +79,7 @@ mark.hl {
 
 /* Жёлтое слово в заголовке — градиент кнопки «Смотреть каталог», без плашки */
 .hl-text {
-  background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #FF1000;
 }
 
 .eyebrow {

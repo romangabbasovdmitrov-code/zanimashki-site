@@ -23,14 +23,23 @@ function renderCatalogBlocks() {
 function pageInit() {
   renderCatalogBlocks();
 
-  // Ссылки вида catalog.html?type=... ведут к нужному блоку
+  // Ссылки вида catalog.html?type=... показывают страницу только с этим блоком
   const params = new URLSearchParams(location.search);
   const type = params.get('type');
-  const map = { propisi: 'b-propisi', razvivashki: 'b-stiray', komplekt: 'b-komplekty', raskraski: 'b-raskraski' };
+  const map = { propisi: 'b-propisi', stiray: 'b-stiray', razvivashki: 'b-stiray', komplekt: 'b-komplekty', komplekty: 'b-komplekty', raskraski: 'b-raskraski' };
   if (type && map[type]) {
-    setTimeout(() => {
-      const el = document.getElementById(map[type]);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 300);
+    const sec = document.getElementById(map[type]);
+    // скрыть остальные блоки каталога
+    document.querySelectorAll('.catalog-block').forEach(b => { if (b !== sec) b.style.display = 'none'; });
+    // скрыть подарочную плашку и плитки-подарки
+    document.querySelectorAll('.cta-panel, .block-nav').forEach(el => { el.style.display = 'none'; });
+    const picks = document.getElementById('gift-picks');
+    if (picks) picks.style.display = 'none';
+    // кнопка возврата ко всему каталогу
+    const back = document.createElement('div');
+    back.style.margin = '0 0 18px';
+    back.innerHTML = '<a class="btn btn-ghost" href="catalog.html">← Показать весь каталог</a>';
+    if (sec && sec.parentNode) sec.parentNode.insertBefore(back, sec);
+    if (sec) sec.scrollIntoView({ block: 'start' });
   }
 }

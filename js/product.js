@@ -186,7 +186,7 @@ function renderProductPage() {
         <article class="review-card" style="box-shadow:none; border:1px solid var(--line)">
           <div class="review-top">
             <span class="review-ava" style="background:${r.color}">${r.name[0]}</span>
-            <div><div class="review-name">${r.name}</div><div class="review-src">${r.meta}</div></div>
+            <div><div class="review-name">${r.name}</div></div>
           </div>
           ${starsSVG(r.rating)}
           <p class="review-text">${r.text}</p>
